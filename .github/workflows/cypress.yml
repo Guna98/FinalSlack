@@ -1,0 +1,134 @@
+# Name of the workflow that appears in GitHub Actions
+name: Cypress Tests with Slack Notification
+ 
+# Define when this workflow will run
+on: [push, pull_request]
+ 
+# Define the jobs to run
+jobs:
+  cypress-run:
+    # Run on multiple operating systems
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]  # Run on both Windows and macOS
+    runs-on: ${{ matrix.os }}  # Use the OS from matrix
+ 
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout
+        uses: actions/checkout@v4
+ 
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+ 
+      # Step 3: Create package.json if it doesn't exist (OS-specific commands)
+      - name: Create package.json if not exists (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh  # PowerShell for Windows
+        run: |
+          if (!(Test-Path package.json)) {
+            @'
+            {
+              "name": "cypress-tests",
+              "version": "1.0.0",
+              "description": "Cypress Test Suite",
+              "scripts": {
+                "test": "cypress run"
+              },
+              "dependencies": {
+                "cypress": "^13.6.0"
+              },
+              "devDependencies": {
+                "cypress": "^13.6.0"
+              }
+            }
+            '@ | Out-File -FilePath package.json -Encoding UTF8
+          }
+ 
+      - name: Create package.json if not exists (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          if [ ! -f package.json ]; then
+            echo '{
+              "name": "cypress-tests",
+              "version": "1.0.0",
+              "description": "Cypress Test Suite",
+              "scripts": {
+                "test": "cypress run"
+              },
+              "dependencies": {
+                "cypress": "^13.6.0"
+              },
+              "devDependencies": {
+                "cypress": "^13.6.0"
+              }
+            }' > package.json
+          fi
+ 
+      # Step 4: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+ 
+      # Step 5: Run Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          record: false
+        continue-on-error: true
+        id: cypress
+ 
+      # Step 6: Save test videos as artifacts
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-videos-${{ runner.os }}  # OS-specific artifact names
+          path: cypress/videos
+          retention-days: 30
+ 
+      # Step 7: Send notification to Slack
+      - name: Send Slack notification
+        if: always()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text":
+              "text": " Cypress Test Results",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🧪 Cypress Test Results",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:*\n${{ steps.cypress.outcome == 'success' && '✅ Passed' || '❌ Failed' }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Triggered by:*\n${{ github.actor }}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*View Details:*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here to view test results>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
