@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-13T11:53:29.676Z",
+    "end": "2024-10-13T11:53:53.065Z",
+    "duration": 23389,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1acd9adb-df84-4df6-9671-93452efa4ce6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Tests\\AssignQuestionsCollab\\AssignAnnualQuestionsCollab.cy.js",
+      "file": "cypress\\e2e\\Tests\\AssignQuestionsCollab\\AssignAnnualQuestionsCollab.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5354f129-431d-49f6-822f-fd1d67f6e90c",
+          "title": "Login and Assign Annual Questions To Collaborator",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Assign Annual Questions To Collaborator",
+              "fullTitle": "Login and Assign Annual Questions To Collaborator Assign Annual Questions To Collaborator",
+              "timedOut": null,
+              "duration": 15934,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.login();\nassignQuestionsCollab.click_latest_brsr_report().click_section_A().click_search_question().click_select_question().click_assign_question().select_collaborator_and_assign().select_assignee_by_index(1).select_reviewer_by_index(1).click_return_back();\n//.click_cancle_button()\n// .click_assign_question() // Changed from click_assign_button to click_assign_question\n//.select_assignee_by_index(0)",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'BRSR' within the selector: 'p' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'BRSR' within the selector: 'p' but never did.\n    at AssignAnnualQuestionsCollab.click_latest_brsr_report (webpack://cypresswebstie/./cypress/e2e/pages/Assign_Questions_collab/assign_annual_questions_collab.js:40:11)\n    at Context.eval (webpack://cypresswebstie/./cypress/e2e/Tests/AssignQuestionsCollab/AssignAnnualQuestionsCollab.cy.js:10:13)",
+                "diff": null
+              },
+              "uuid": "e2092b88-231e-40a0-bfe7-3dc342532c3c",
+              "parentUUID": "5354f129-431d-49f6-822f-fd1d67f6e90c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e2092b88-231e-40a0-bfe7-3dc342532c3c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 15934,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

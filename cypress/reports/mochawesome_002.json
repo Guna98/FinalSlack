@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-13T11:50:21.320Z",
+    "end": "2024-10-13T11:50:55.126Z",
+    "duration": 33806,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e94adc06-21b2-48ad-9e03-7058b75abc10",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Tests\\Assessment\\add_assessment_framework.cy.js",
+      "file": "cypress\\e2e\\Tests\\Assessment\\add_assessment_framework.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b535dc30-f48e-454e-97e7-d15ba672cc52",
+          "title": "Login and Add Assessment Framework",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login and add BRSR report",
+              "fullTitle": "Login and Add Assessment Framework Login and add BRSR report",
+              "timedOut": null,
+              "duration": 23614,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "assessmentframework.clickAssessment().addAssessment().clickFramework().selectFramework(1).SelectDate(1).SelectAssessmentDueDate().SelectAuditDueDate().SelectAuditor(0).SelectBusinessCriticality(1).SelectSupplier(1).clickViewSuppliers();\n//  .clickSend()",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `div[id=\"assessment\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `div[id=\"assessment\"]`, but never found it.\n    at AssessmentFrameworks.clickAssessment (webpack://cypresswebstie/./cypress/e2e/pages/Assessment_Page/Assessment_Framework.js:21:11)\n    at Context.eval (webpack://cypresswebstie/./cypress/e2e/Tests/Assessment/add_assessment_framework.cy.js:17:13)",
+                "diff": null
+              },
+              "uuid": "43b87d82-84aa-4375-8a25-679ff01940e3",
+              "parentUUID": "b535dc30-f48e-454e-97e7-d15ba672cc52",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "43b87d82-84aa-4375-8a25-679ff01940e3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 23614,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

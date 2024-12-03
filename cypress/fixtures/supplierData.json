@@ -1,0 +1,32 @@
+[
+    {
+        "companyName": "Supplier A",
+        "country": "India",
+        "PAN": "ABCDE1234F",
+        "location": "Delhi",
+        "businessCriticality": "High",
+        "annualSpend": 1000000,
+        "supplierCategory": "Primary",
+        "SPOCName": "John Doe",
+        "designation": "Manager",
+        "email": "john@example.com",
+        "mobile": "1234567890",
+        "fullAddress": "123 Street, City",
+        "website": "https://supplierA.com"
+    },
+    {
+        "companyName": "Supplier B",
+        "country": "USA",
+        "PAN": "XYZ1234567",
+        "location": "New York",
+        "businessCriticality": "Medium",
+        "annualSpend": 500000,
+        "supplierCategory": "Secondary",
+        "SPOCName": "Jane Doe",
+        "designation": "CEO",
+        "email": "jane@example.com",
+        "mobile": "0987654321",
+        "fullAddress": "456 Avenue, NY",
+        "website": "https://supplierB.com"
+    }
+]

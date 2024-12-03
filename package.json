@@ -1,0 +1,26 @@
+{
+  "name": "cypresswebstie",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "xlsx-populate": "^1.21.0",
+    "cypress": "^13.6.0"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.0",
+    "cypress-downloadfile": "^1.2.4",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-xpath": "^2.0.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "xlsx": "^0.18.5"
+  }
+}
