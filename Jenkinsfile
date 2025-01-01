@@ -19,7 +19,7 @@ pipeline {
         stage('Run Specific Test') {
             steps {
                 // Run the specified Cypress test file
-                sh 'npx cypress run --spec "cypress/e2e/Tests/Run_All_Regression_Tests.cy.js"'
+                sh 'npx cypress run --spec "cypress/e2e/Tests/RunAllTests.cy.js"'
             }
         }
     }
